@@ -1,0 +1,422 @@
+:root {
+    /* Premium Color Palette */
+    --primary: #4F46E5;
+    /* Indigo 600 */
+    --primary-hover: #4338CA;
+    /* Indigo 700 */
+    --secondary: #10B981;
+    /* Emerald 500 */
+    --accent: #F59E0B;
+    /* Amber 500 */
+    --danger: #EF4444;
+    /* Red 500 */
+    --dark-bg: #111827;
+    /* Gray 900 */
+    --dark-card: #1F2937;
+    /* Gray 800 */
+    --text-main: #F9FAFB;
+    /* Gray 50 */
+    --text-muted: #9CA3AF;
+    /* Gray 400 */
+    --border: #374151;
+    /* Gray 700 */
+
+    /* Layout */
+    --sidebar-width: 260px;
+    --radius: 12px;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background-color: #E0F2FE;
+    /* Light blue */
+    background-image: url('background.png');
+    background-repeat: repeat;
+    background-size: 400px;
+    /* Adjust size as needed */
+    color: #1F2937;
+    /* Dark text for readability on light bg */
+    overflow: hidden;
+    /* App-like feel */
+}
+
+/* App Container */
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--dark-card);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    color: var(--text-main);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 3rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.nav-links li {
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--text-muted);
+    transition: all 0.3s ease;
+}
+
+.nav-links li:hover,
+.nav-links li.active {
+    background-color: rgba(79, 70, 229, 0.1);
+    color: var(--primary);
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2rem;
+    position: relative;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-danger-outline {
+    background-color: transparent;
+    color: var(--danger);
+    border: 1px solid var(--danger);
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-danger-outline:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+.full-width {
+    width: 100%;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+/* Views */
+.view {
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.view.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Dashboard Stats */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background-color: var(--dark-card);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: var(--shadow);
+    color: var(--text-main);
+}
+
+.stat-card .icon-box {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    background-image: url('money_note.png');
+    background-size: cover;
+    background-position: center;
+    color: #FEF08A;
+    /* Light Yellow */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Remove individual background colors but keep semantic meaning if needed - currently overriding all */
+.income .icon-box,
+.expense .icon-box,
+.balance .icon-box {
+    background-color: transparent;
+    /* color is now unified leight yellow as requested, or should we keep semantic colors?
+       User said: "other icons in the app should be in light yellow colour"
+       I will set them all to light yellow.
+    */
+}
+
+
+
+.stat-info p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.stat-info h2 {
+    font-size: 1.5rem;
+    margin-top: 0.2rem;
+}
+
+/* Charts */
+.charts-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1.5rem;
+}
+
+.chart-box {
+    background-color: var(--dark-card);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    color: var(--text-main);
+}
+
+.chart-box h3 {
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+/* Transactions Table */
+.table-container {
+    background-color: var(--dark-card);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    color: var(--text-main);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+th,
+td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+th {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+td {
+    color: var(--text-main);
+}
+
+.filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+input,
+select {
+    background-color: var(--dark-card);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    padding: 0.6rem 1rem;
+    border-radius: var(--radius);
+    outline: none;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--primary);
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.modal {
+    background-color: var(--dark-card);
+    width: 400px;
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.modal-header button {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+}
+
+/* Radio Toggle */
+.type-selector {
+    display: flex;
+    gap: 0.5rem;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.3rem;
+    border-radius: var(--radius);
+}
+
+.radio-label {
+    flex: 1;
+    position: relative;
+    cursor: pointer;
+}
+
+.radio-label input {
+    position: absolute;
+    opacity: 0;
+}
+
+.radio-custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: all 0.3s;
+}
+
+.radio-label input:checked+.radio-custom.expense {
+    background-color: var(--danger);
+    color: white;
+}
+
+.radio-label input:checked+.radio-custom.income {
+    background-color: var(--secondary);
+    color: white;
+}
